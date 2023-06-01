@@ -7,4 +7,3 @@ public class Solution {
         return x;
     }
 }
-
