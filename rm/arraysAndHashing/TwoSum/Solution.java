@@ -1,6 +1,8 @@
 package arraysAndHashing.TwoSum;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Solution {
     public static void main(String[] args) {
@@ -9,7 +11,7 @@ public class Solution {
         System.out.println(Arrays.toString(twoSum(arrayToCheck, target)));
     }
 
-    public static int[] twoSum(int[] nums, int target) {
+    /*public static int[] twoSum(int[] nums, int target) {
         int len = nums.length;
         int[] out = new int[2];
         for (int i = 0; i < len; i++) {
@@ -21,5 +23,18 @@ public class Solution {
             }
         }
         return out;
+    }    */
+    public static int[] twoSum(int[] nums, int target) {
+        Map<Integer, Integer> numsMap = new HashMap<>();
+        int len = nums.length;
+
+        for (int i = 0; i < len; i++) {
+            int differenceTarget = target - nums[i];
+            if(numsMap.containsKey(differenceTarget)) {
+                return new int[]{numsMap.get(differenceTarget),i};
+            }
+            numsMap.put(nums[i],i);
+        }
+        return new int[2];
     }
 }
